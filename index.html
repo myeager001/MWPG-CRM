@@ -11,8 +11,17 @@
     <nav class='navBar'>
       <img src='/MWPGLogo.png' class='logo'>
       <h2> Event Manager </h2>
-
+      <input ng-model='search' placeholder="Search events" class='search'>
+      <select ng-model='sortBy'>
+        <option value='-date'>Date</option>
+        <option value='-contactName'>Contact Name</option>
+        <option value='-eventName'>Event Name</option>
+        <option value='-eventID'>Event Id</option>
+      </select>
     </nav>
-
+    <main>
+      <div ng-repeat='event in events | orderBy '>
+      </div>
+    </main>
   </body>
 </html>
