@@ -6,13 +6,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src='/main.js'></script>
     <link rel="stylesheet" href="/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    </script>
   </head>
-  <body>
+  <body ng-controller='events'>
     <nav class='navBar'>
       <img src='/MWPGLogo.png' class='logo'>
       <h2> Event Manager </h2>
-      <input ng-model='search' placeholder="Search events" class='search'>
-      <select ng-model='sortBy'>
+      <div>
+        <i class="fa fa-search"></i>
+        <input ng-model='search' placeholder="Search events" class='search'>
+      </div>
+      <select ng-model='sortBy' class='sortBy'>
         <option value='-date'>Date</option>
         <option value='-contactName'>Contact Name</option>
         <option value='-eventName'>Event Name</option>

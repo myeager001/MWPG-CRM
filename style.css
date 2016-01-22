@@ -9,4 +9,23 @@ body{
   display: flex;
   flex-direction: row;
   background-color: grey;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.sortBy{
+  width:15%;
+  font-size: 20pt;
+  padding: 20px;
+  height:50%
+
+}
+.search{
+  height: 50%;
+  border-radius: 16px
+
+}
+option{
+  height: 50px;
+  font-size: 30pt;
 }
