@@ -1,3 +1,4 @@
+
 var app = angular.module('eventManager', [])
 app.controller('events',  function($scope, $http){
   $scope.show = false;
