@@ -3,10 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>MWPG Customer Relations</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src='main.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    </script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'>
     </script>
   </head>
   <body ng-controller='events'>
@@ -18,14 +21,31 @@
         <input ng-model='search' placeholder="Search events" class='search'>
       </div>
       <select ng-model='sortBy' class='sortBy'>
-        <option value='-date'>Date</option>
-        <option value='-contactName'>Contact Name</option>
-        <option value='-eventName'>Event Name</option>
-        <option value='-eventID'>Event Id</option>
+        <option value='-gsx$timestamp.$t'>Date</option>
+        <option value='-gsx$overallsatisfaction.$t'>Overall Satisfaction</option>
+        <option value='-gsx$whatisthenameofyourcompanyevent.$t'>Event Name</option>
+        <option value='-$index'>Event Id</option>
       </select>
     </nav>
     <main>
-      <div ng-repeat='event in events | orderBy '>
+      <!-- <canvas width="400px" height='400px' id='avg'></canvas> -->
+      <div ng-repeat='result in results | orderBy: sortBy | filter: search'>
+        <h1 ng-click='show = !show'>{{result.gsx$whatisthenameofyourcompanyevent.$t}}</h1>
+        <div class="single-event" ng-show='show'>
+          <ul>
+            <li>{{result.gsx$timestamp.$t.substr(0, 10)}}</li>
+            <li>What was the name of the lead tech you worked with?</br>{{result.gsx$whowastheleadtechyoucommunicatedwith.$t}}</li>
+            <li>Comments about the event:</br>{{result.gsx$anycommentsabouttheeventoptional.$t}}</li>
+            <li>Was the crew on time:</br>{{result.gsx$didtheeventcrewarriveontime.$t}}</li>
+            <li>Was the crew competent?(out of 5)</br>{{result.gsx$howconfidentwereyouinthecrewsabilitytoaccommodatetheneedsoftheevent.$t}}</li>
+            <li>How satisfied were you with the aesthetics of the setup? (out of 5)</br>{{result.gsx$howsatisfiedwereyouwiththeoverallaestheticofthesetup.$t}}</li>
+            <li>Rate the value of the services you received: (out of 5)</br>{{result.gsx$overallhowwouldyouratethevalueoftheservicesyoureceived.$t}}</li>
+            <li>Was the equipment set up on time?</br>{{result.gsx$wasequipmentsetupandfunctioningintheexpectedtimeframe.$t}}</li>
+            <li>Future events?</br>{{result.gsx$whatothereventsdoyouhavecomingupinthefutureoptional.$t}}</li>
+          </ul>
+
+        </div>
+
       </div>
     </main>
   </body>
